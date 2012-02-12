@@ -49,6 +49,18 @@
 					
 				</li>
 				</g:if>
+				
+				<g:if test="${postInstance?.comments}">
+				<li class="fieldcontain">
+					<span id="comments-label" class="property-label"><g:message code="post.comments.label" default="Comments" /></span>
+					<span class="property-value" aria-labelledby="comments-label">
+						<g:each in="${postInstance.comments}" status="i" var="comment">
+							<p>${comment.content} - <i>${comment.user}</i> at <i>${comment.dateCreated}</i></p>
+							<br />
+						</g:each> 
+					</span>
+				</li>
+				</g:if>
 			
 			</ol>
 			<g:form>
@@ -56,6 +68,9 @@
 					<g:hiddenField name="id" value="${postInstance?.id}" />
 					<g:link class="edit" action="edit" id="${postInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					<sec:ifLoggedIn>
+						<g:link class="comment" action="create" controller="comment" params="['post.id': postInstance.id, 'user.id': sec.loggedInUserInfo(field: 'id')]" ><g:message code="default.button.comment.label" default="Comment" /></g:link>
+					</sec:ifLoggedIn>
 				</fieldset>
 			</g:form>
 		</div>

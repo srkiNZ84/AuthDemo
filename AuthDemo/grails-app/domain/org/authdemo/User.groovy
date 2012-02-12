@@ -11,7 +11,7 @@ class User {
 	boolean accountLocked
 	boolean passwordExpired
 	
-	static hasMany = [posts:Post]
+	static hasMany = [posts:Post, comments:Comment]
 	
 	static constraints = {
 		username blank: false, unique: true

@@ -1,7 +1,4 @@
 <%@ page import="org.authdemo.Post" %>
-<%@ page import="grails.plugins.springsecurity.SpringSecurityService" %>
-<% def springSecurityService %>
-
 
 <div class="fieldcontain ${hasErrors(bean: postInstance, field: 'title', 'error')} ">
 	<label for="title">
