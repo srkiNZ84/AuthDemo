@@ -1,5 +1,6 @@
 <%@ page import="org.authdemo.Post" %>
-
+<%@ page import="grails.plugins.springsecurity.SpringSecurityService" %>
+<% def springSecurityService %>
 
 
 <div class="fieldcontain ${hasErrors(bean: postInstance, field: 'title', 'error')} ">
@@ -18,6 +19,7 @@
 	<g:textArea name="content" cols="40" rows="5" maxlength="1000" value="${postInstance?.content}"/>
 </div>
 
+<sec:ifAllGranted roles="ROLE_ADMIN">
 <div class="fieldcontain ${hasErrors(bean: postInstance, field: 'user', 'error')} required">
 	<label for="user">
 		<g:message code="post.user.label" default="User" />
@@ -25,4 +27,10 @@
 	</label>
 	<g:select id="user" name="user.id" from="${org.authdemo.User.list()}" optionKey="id" required="" value="${postInstance?.user?.id}" class="many-to-one"/>
 </div>
+</sec:ifAllGranted>
 
+<sec:ifNotGranted roles="ROLE_ADMIN">
+	<div class="fieldcontain ${hasErrors(bean: postInstance, field: 'user', 'error')} required">
+			<g:hiddenField name="user.id" value="${ sec.loggedInUserInfo(field: "id") }" />
+	</div>
+</sec:ifNotGranted>

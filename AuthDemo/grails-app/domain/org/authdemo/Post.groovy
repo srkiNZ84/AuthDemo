@@ -8,7 +8,7 @@ class Post {
 	static belongsTo = [user:User]
 
     static constraints = {
-		title()
+		title(unique: true, blank: false)
 		content(maxSize:1000)
     }
 	

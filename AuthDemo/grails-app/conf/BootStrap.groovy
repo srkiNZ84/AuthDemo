@@ -24,6 +24,13 @@ class BootStrap {
 		if(!bobUser.authorities.contains(adminRole)){
 			UserRole.create(bobUser, adminRole)
 		}
+		
+		//def samFirstPost = Post.findByTitle("Sam's first Post") ?: new Post(title: "Sam's first Post", content: "The first post by Sam.", user: samUser).save()
+		//def samSecondPost = Post.findByTitle("Sam's second Post") ?: new Post(title: "Sam's second Post", content: "The second post by Sam.", user: samUser).save()
+		
+		def joePost = Post.findByTitle("Joe's post") ?: new Post(title: "Joe's post", content: "Joes post.", user: joeUser).save()
+		
+		def bobPost = Post.findByTitle("Bob's post") ?: new Post(title: "Bob's post", content: "Bobs post.", user: bobUser).save()
     }
     def destroy = {
     }
