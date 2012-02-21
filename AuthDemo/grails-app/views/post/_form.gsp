@@ -28,6 +28,6 @@
 
 <sec:ifNotGranted roles="ROLE_ADMIN">
 	<div class="fieldcontain ${hasErrors(bean: postInstance, field: 'user', 'error')} required">
-			<g:hiddenField name="user.id" value="${ sec.loggedInUserInfo(field: "id") }" />
+			<g:hiddenField name="user.id" value="${sec.loggedInUserInfo(field: "id")}" />
 	</div>
 </sec:ifNotGranted>

@@ -1,3 +1,5 @@
+<%@ page import="org.authdemo.Post" %>
+
 <!doctype html>
 <html>
 	<head>
@@ -111,6 +113,19 @@
 					</g:each>
 				</ul>
 			</div>
+			
+			<sec:ifLoggedIn>
+				<div id="recent-posts" role="recent">			
+					<g:if test="${posts?.count > 0}">
+						<h2>Recent Posts:</h2>
+						<ul>
+							<g:each var="post" in="${posts}">
+								<li><g:link controller="post" action="show" id="${post.id}">${post.title}</g:link></li>
+							</g:each>
+						</ul>
+					</g:if>
+				</div>
+			</sec:ifLoggedIn>
 		</div>
 	</body>
 </html>

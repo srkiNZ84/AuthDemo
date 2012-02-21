@@ -29,6 +29,7 @@ class BootStrap {
 		//def samSecondPost = Post.findByTitle("Sam's second Post") ?: new Post(title: "Sam's second Post", content: "The second post by Sam.", user: samUser).save()
 		
 		def joePost = Post.findByTitle("Joe's post") ?: new Post(title: "Joe's post", content: "Joes post.", user: joeUser).save()
+		def joePost2 = Post.findByTitle("Joe post two") ?: new Post(title: "Joe post two", content: "The second post.", user: joeUser).save()
 		
 		def bobPost = Post.findByTitle("Bob's post") ?: new Post(title: "Bob's post", content: "Bobs post.", user: bobUser).save()
     }
