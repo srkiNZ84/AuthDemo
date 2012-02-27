@@ -32,6 +32,8 @@ class BootStrap {
 		def joePost2 = Post.findByTitle("Joe post two") ?: new Post(title: "Joe post two", content: "The second post.", user: joeUser).save()
 		
 		def bobPost = Post.findByTitle("Bob's post") ?: new Post(title: "Bob's post", content: "Bobs post.", user: bobUser).save()
+		
+		//org.hsqldb.util.DatabaseManager.main()
     }
     def destroy = {
     }
